@@ -1,0 +1,558 @@
+/* ===========================
+   CSS VARIABLES
+=========================== */
+:root {
+  --accent: #6D6DFF;
+  --accent-2: #9B6DFF;
+  --bg: #121212;
+  --bg-card: #1C1C1C;
+  --text: #ffffff;
+  --text-muted: #ababab;
+  --font-title: 'Archivo Black', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --max-width: 1200px;
+}
+
+/* ===========================
+   RESET & BASE
+=========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+/* ===========================
+   PROFILE SECTION
+=========================== */
+.profile {
+  position: relative;
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+}
+
+.profile__bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.profile__bg-glow--purple {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #6D6DFF 0%, rgba(109,109,255,0.6) 40%, transparent 70%);
+  opacity: 1;
+  top: 240px;
+  left: 933px;
+  filter: blur(120px);
+}
+
+.profile__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.profile__info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Nombre: Archivo Black 72px */
+.profile__name {
+  font-family: var(--font-title);
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+
+/* Subtítulo: Open Sans Regular 18px */
+.profile__title {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+/* Bio: Open Sans Regular 18px */
+.profile__bio {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: #e0e0e0;
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+
+/* Links: Open Sans SemiBold 18px + gradient underline */
+.profile__links {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.profile__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--text);
+  padding-bottom: 6px;
+  background-image: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background-repeat: no-repeat;
+  background-size: 100% 3px;
+  background-position: 0 100%;
+  transition: opacity 0.2s;
+}
+
+.profile__link:hover { opacity: 0.75; }
+
+/* Photo */
+.profile__photo-wrapper {
+  flex-shrink: 0;
+  width: 340px;
+  height: 430px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.profile__photo-wrapper--placeholder {
+  background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+}
+
+.profile__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ===========================
+   SKILLS SECTION
+   120px gap from profile links to section title
+=========================== */
+.skills {
+  padding: 0 60px 80px;
+}
+
+.skills__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* 120px from the last link to this heading */
+.skills__title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 40px;
+}
+
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skills__item img,
+.skills__item svg {
+  width: 56px;
+  height: 56px;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.skills__item:hover img,
+.skills__item:hover svg {
+  transform: translateY(-4px);
+  filter: brightness(1.2);
+}
+
+.skills__item--white img { filter: invert(1); }
+.skills__item--white:hover img { filter: invert(1) brightness(1.2); }
+
+/* ===========================
+   PROJECTS SECTION
+=========================== */
+.projects {
+  position: relative;
+  z-index: 1;
+  padding: 80px 60px;
+}
+
+.projects__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Proyectos destacados: Archivo Black 40px */
+.projects__title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 40px;
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s;
+}
+
+.card:hover { transform: translateY(-4px); }
+
+.card__image-wrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 16px;
+}
+
+.card__tech {
+  display: flex;
+  gap: 8px;
+}
+
+.card__tech img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+}
+
+.card__body {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Título tarjeta: Open Sans Bold 24px */
+.card__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+
+/* Descripción tarjeta: Open Sans Regular 18px */
+.card__description {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.card__links {
+  display: flex;
+  gap: 20px;
+}
+
+.card__link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  transition: opacity 0.2s;
+}
+
+.card__link:hover { opacity: 0.75; }
+.card__link--demo { color: var(--accent); }
+.card__link--github { color: var(--text-muted); }
+
+/* ===========================
+   CONTACT SECTION
+=========================== */
+.contact {
+  position: relative;
+  text-align: center;
+  padding: 80px 60px;
+}
+
+.contact__bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #6D6DFF 0%, rgba(109,109,255,0.6) 40%, transparent 70%);
+  opacity: 1;
+  filter: blur(120px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.contact__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Contacto: Archivo Black 40px centrado */
+.contact__title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.contact__email {
+  display: block;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 18px;
+  margin-bottom: 36px;
+  transition: opacity 0.2s;
+}
+
+.contact__email:hover { opacity: 0.75; }
+
+.contact__social {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.contact__social a {
+  color: var(--text-muted);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.contact__social a:hover {
+  color: var(--text);
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   RESPONSIVE – TABLET (≤1023px)
+=========================== */
+@media (max-width: 1023px) {
+  .profile {
+    padding: 60px 40px;
+  }
+
+  .profile__name { font-size: 56px; }
+  .profile__content { gap: 40px; }
+
+  .profile__photo-wrapper {
+    width: 260px;
+    height: 320px;
+  }
+
+  .skills { padding: 0 40px 60px; }
+  .projects { padding: 60px 40px; }
+  .projects__grid { grid-template-columns: 1fr; }
+  .contact { padding: 60px 40px; }
+
+  .profile__bg-glow--purple { left: calc(50% - 150px); top: 180px; }
+}
+
+/* ===========================
+   RESPONSIVE – TABLET 768px (≤767px)
+=========================== */
+@media (max-width: 767px) {
+  .profile {
+    padding: 40px 28px;
+  }
+
+  .profile__content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .profile__info { flex: 1; min-width: 0; }
+
+  .profile__name {
+    font-size: 36px;
+    line-height: 1.05;
+  }
+
+  .profile__title {
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  .profile__bio { font-size: 14px; }
+
+  .profile__links {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .profile__link {
+    font-size: 16px;
+    width: fit-content;
+  }
+
+  .profile__photo-wrapper {
+    flex-shrink: 0;
+    width: 160px;
+    height: 200px;
+  }
+
+  .skills { padding: 0 28px 48px; }
+  .skills__title { font-size: 28px; margin-bottom: 28px; }
+  .skills__list { justify-content: space-between; gap: 20px 0; }
+  .skills__item img,
+  .skills__item svg { width: 44px; height: 44px; }
+
+  .projects { padding: 40px 28px; }
+  .projects__title { font-size: 28px; }
+  .projects__grid { grid-template-columns: 1fr; }
+  .card__title { font-size: 20px; }
+  .card__description { font-size: 16px; }
+
+  .contact { padding: 60px 28px; }
+  .contact__title { font-size: 32px; }
+  .contact__email { font-size: 16px; }
+
+  .profile__bg-glow--purple {
+    width: 200px;
+    height: 200px;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+  }
+}
+
+/* ===========================
+   RESPONSIVE – MOBILE 320px (≤480px)
+=========================== */
+@media (max-width: 480px) {
+  .profile {
+    padding: 32px 20px;
+  }
+
+  .profile__content {
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .profile__photo-wrapper {
+    width: 100%;
+    height: 280px;
+  }
+
+  .profile__name { font-size: 40px; }
+
+  .profile__title {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .profile__bio { font-size: 14px; }
+
+  .profile__links {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .profile__link {
+    font-size: 16px;
+    width: fit-content;
+  }
+
+  .skills { padding: 0 20px 40px; }
+  .skills__title { font-size: 24px; margin-bottom: 24px; }
+
+  /* Iconos en grid de 4 por fila en 320px */
+  .skills__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 24px;
+  }
+
+  .skills__item img,
+  .skills__item svg { width: 40px; height: 40px; }
+
+  .projects { padding: 32px 20px; }
+  .projects__title { font-size: 24px; }
+  .card__body { padding: 16px 16px 20px; }
+  .card__title { font-size: 18px; }
+  .card__description { font-size: 14px; }
+
+  .contact { padding: 48px 20px; }
+  .contact__title { font-size: 28px; }
+  .contact__email { font-size: 14px; }
+  .contact__social { gap: 24px; }
+
+  .profile__bg-glow--purple {
+    width: 180px;
+    height: 180px;
+    left: 50%;
+    top: 80px;
+    transform: translateX(-50%);
+  }
+}
